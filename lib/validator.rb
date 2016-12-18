@@ -13,7 +13,7 @@ class Validator
   def initialize(puzzle_string)
     @grid = []
     @puzzle_string = puzzle_string
-    build_grid(@puzzle_string)
+    build_grid
     validate
   end
 
@@ -36,11 +36,10 @@ class Validator
   # This method parses sudoku files extensions
   # with specifi output format, if output changes
   # this method must be revised
-  def build_grid(puzzle)
-    invalid_row = '------+------+------'
-    grid = puzzle.delete(invalid_row).tr('|', '').split(/\n/).reject!(&:empty?)
+  def build_grid
+    grid = @puzzle_string.gsub(/\D/, '').chars.map(&:to_i).each_slice(9).to_a
     grid.each do |row|
-      @grid << row.split(/\s/).map(&:to_i).each_slice(3).to_a
+      @grid << row.each_slice(3).to_a
     end
   end
 
@@ -65,10 +64,8 @@ class Validator
   end
 
   def duplicate?(arr)
-    result = arr.flatten.each_with_object({}) do |e, a|
-      (a.key?(e) ? a[e] += 1 : a[e] = 0) if e > 0
-    end
-    result.any? { |_, v| v.nonzero? }
+    result = arr.flatten.reject(&:zero?)
+    result.uniq.size < result.size
   end
 
   def complete?
