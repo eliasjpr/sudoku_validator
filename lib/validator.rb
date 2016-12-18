@@ -1,4 +1,10 @@
-# Validates a sudoku puzzle
+# Validates a sudoku puzzle using the following process
+# 1 - Parses/Clean up the sudoku grid (remove extra lines, characters, etc)
+# 2 - Build array of arrays sudoku grid
+# 3 - Check if rows are valid
+# 4 - Check if columns are valid
+# 5 - Check if regions are valid
+# 6 - Check if game is completed (does not have 0 aka blanks)
 class Validator
   VALID = 'This sudoku is valid.'.freeze
   INVALID = 'This sudoku is invalid.'.freeze
