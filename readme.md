@@ -1,3 +1,7 @@
+# Sudoku Game Validator
+
+Validates a sudoku puzzle using the following process
+
 1 - Clean up the sudoku grid (remove extra lines, characters)
 2 - Build array of arrays grid
 3 - Check if row is valid
