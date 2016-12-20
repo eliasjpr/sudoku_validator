@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require './lib/validator'
+
+puzzle = File.read('./spec/fixtures/'.concat(ARGV[0]))
+puts Validator.validate(puzzle)
