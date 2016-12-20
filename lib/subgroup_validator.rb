@@ -14,8 +14,13 @@ class SubgroupValidator
   def valid?
     regions = []
     @grid.each_slice(3) do |region|
-      regions << duplicate?(region.transpose[0..2])
+      (0..2).each do |a|
+        x = (a * 3)
+        y = ((a + 1) * 3) - 1
+        regions << duplicate?(region.transpose[x..y])
+      end
     end
+    p '============', regions.all? { |e| e == false }, '============'
     # All region must not have duplicates
     regions.all? { |e| e == false }
   end
