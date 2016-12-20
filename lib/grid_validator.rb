@@ -11,7 +11,9 @@ class GridValidator
   end
 
   def valid?
-    (RowValidator.valid?(@grid) && ColumnValidator.valid?(@grid) && SubgroupValidator.valid?(@grid))
+    (RowValidator.valid?(@grid) &&
+    ColumnValidator.valid?(@grid) &&
+    SubgroupValidator.valid?(@grid))
   end
 
   def complete?

@@ -20,8 +20,6 @@ class SubgroupValidator
         regions << duplicate?(region.transpose[x..y])
       end
     end
-    p '============', regions.all? { |e| e == false }, '============'
-    # All region must not have duplicates
     regions.all? { |e| e == false }
   end
 end
