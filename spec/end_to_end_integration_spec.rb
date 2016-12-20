@@ -35,7 +35,9 @@ describe "End-to-end test" do
     invalid_fixtures.each do |fixture|
       it 'returns a string saying so' do
         result = Validator.validate(File.read(fixture))
-        expect(result).to eq('This sudoku is invalid.')
+        expect(result).to(
+          eq('This sudoku is invalid.'),
+          "Expected #{fixture} to be invalid but it wasn't.")
       end
     end
   end
